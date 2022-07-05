@@ -1,5 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from .settings import base
+
 
 # Three modules for swagger:
 from rest_framework import permissions
@@ -30,5 +33,5 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path('__debug__/', include('debug_toolbar.urls')),
     path('auth/', include('user.urls')),
-]
+] + static(base.STATIC_URL, document_root=base.STATIC_ROOT) + static(base.MEDIA_URL, document_root=base.MEDIA_ROOT)
 
