@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     # myapps 
     'user',
+    'post',
 ]
 
 MIDDLEWARE = [

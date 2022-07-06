@@ -33,5 +33,6 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     path('__debug__/', include('debug_toolbar.urls')),
     path('auth/', include('user.urls')),
+    path('post/', include('post.urls')),
 ] + static(base.STATIC_URL, document_root=base.STATIC_ROOT) + static(base.MEDIA_URL, document_root=base.MEDIA_ROOT)
 
