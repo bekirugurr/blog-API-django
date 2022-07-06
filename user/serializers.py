@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from dj_rest_auth.serializers import TokenSerializer
 from .models import Profile
+from pprint import pprint
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -73,20 +74,14 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-#! login olduğunda token ile birlikte user bilgilerinin dönmesi için aşağıya CustomTokenSerializers yazdım
-# TokenSerializers olarak CustomTokenSerializers i kabul etmesi için settings>base.py da REST_AUTH_SERIALIZERS = {} içine 'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer' yazdım
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = (
-            'profile_pic',
-            'profile_bio',
-            'user'
-            )
+        fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = ProfileSerializer(read_only=True)
+    profile = ProfileSerializer(many=False, read_only=True)
     class Meta:
         model = User
         fields = (
@@ -97,8 +92,10 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'profile'
         )
+        read_only_fields = ('id',)
 
-
+#! login olduğunda token ile birlikte user bilgilerinin dönmesi için aşağıya CustomTokenSerializers yazdım
+# TokenSerializers olarak CustomTokenSerializers i kabul etmesi için settings>base.py da REST_AUTH_SERIALIZERS = {} içine 'TOKEN_SERIALIZER': 'users.serializers.CustomTokenSerializer' yazdım
 class CustomTokenSerializer(TokenSerializer):
     user = UserSerializer(read_only=True)
 
@@ -107,9 +104,6 @@ class CustomTokenSerializer(TokenSerializer):
             'key',
             'user'
         )
-
-
-
 
 
 
