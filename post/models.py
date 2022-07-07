@@ -23,6 +23,8 @@ class Category(models.Model):
 
     def __str__(self):
         return f'{self.category}'
+    class Meta: 
+        verbose_name_plural = "Categories"
 
 
 class Post(models.Model): 
@@ -38,7 +40,7 @@ class Post(models.Model):
     status = models.CharField(max_length=50, choices=STATUS, default='D')
     slug = models.SlugField(null=False, blank=True, editable=False)
     writer = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True, related_name='posts')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=17)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return f'{self.title}'
@@ -60,7 +62,7 @@ class Like(models.Model):
     who_liked = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True) 
     post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True, related_name='likes')
 
-class PostView(models.Model):
+class View(models.Model):
     who_viewed = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True) 
     post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True, related_name='views')
 
