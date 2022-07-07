@@ -32,6 +32,8 @@ class PostSerializer(serializers.ModelSerializer):
     post_detail = serializers.HyperlinkedIdentityField(view_name='post-detail') 
     is_liked = serializers.SerializerMethodField()
     is_viewed = serializers.SerializerMethodField()
+    likes_count = serializers.SerializerMethodField()
+    views_count = serializers.SerializerMethodField()
     profile_pic = serializers.SerializerMethodField()
 
     def get_is_liked(self, obj):
@@ -49,6 +51,13 @@ class PostSerializer(serializers.ModelSerializer):
         if current_user in who_viewed_list:
             return True
         return False
+
+    def get_likes_count(self, obj):
+        return Like.objects.filter(post=obj).count()
+
+    def get_views_count(self, obj):
+        return View.objects.filter(post=obj).count()
+
     
     def get_profile_pic(self, obj):
         profile_list = Profile.objects.filter(user=obj.writer)
@@ -64,6 +73,8 @@ class PostSerializer(serializers.ModelSerializer):
     "comments",
     "is_viewed",
     "is_liked",
+    "views_count",
+    "likes_count",
     "profile_pic",
     "post_detail",
     "title",
