@@ -29,7 +29,6 @@ class ViewSerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     # user = UserSerializer(read_only=True)
-    profile = ProfileSerializer(source='profile_set', read_only=True, required=False)
     comments = CommentSerializer(many=True, read_only=True, required=False)
     post_detail = serializers.HyperlinkedIdentityField(view_name='post-detail') 
     is_liked = serializers.SerializerMethodField()
@@ -76,9 +75,8 @@ class PostSerializer(serializers.ModelSerializer):
     "status",
     "slug",
     "writer",
-    "category",
-    "profile"
-        )
+    "category"
+    )
     
 
 

@@ -15,5 +15,5 @@ class IsCurrentUserOwnerOrAdminOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
         else:
-            return obj.user == request.user or request.user.is_staff
+            return obj.writer == request.user or request.user.is_staff
 
