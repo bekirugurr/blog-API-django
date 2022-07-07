@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .serializers import CategorySerializer, PostSerializer, CommentSerializer, LikeSerializer, ViewSerializer
 from rest_framework.viewsets import ModelViewSet
-from .models import Category, Post, Comment, Like
+from .models import Category, Post, Comment, Like, View
 from .permissions import IsAdminOrReadOnly, IsCurrentUserOwnerOrAdminOrReadOnly
 from rest_framework.parsers import MultiPartParser, FormParser
 from .paginations import MyCursorPagination
@@ -26,5 +26,15 @@ class PostView(ModelViewSet):
     search_fields = ('title', 'content')
 
 
+class CommentView(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    
+class LikeView(ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+class ViewListView(ModelViewSet):
+    queryset = View.objects.all()
+    serializer_class = ViewSerializer
 
 
