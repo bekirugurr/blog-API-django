@@ -8,13 +8,10 @@ from .paginations import MyCursorPagination
 from rest_framework.filters import SearchFilter
 
 
-
-
 class CategoryView(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (IsAdminOrReadOnly,)
-
 
 class PostView(ModelViewSet):
     queryset = Post.objects.all()
@@ -25,7 +22,6 @@ class PostView(ModelViewSet):
     filter_backends = (SearchFilter,)
     search_fields = ('title', 'content')
 
-
 class CommentView(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -33,6 +29,7 @@ class CommentView(ModelViewSet):
 class LikeView(ModelViewSet):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
+
 class ViewListView(ModelViewSet):
     queryset = View.objects.all()
     serializer_class = ViewSerializer

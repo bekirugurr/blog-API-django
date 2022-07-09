@@ -38,7 +38,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_is_liked(self, obj):
         current_user = self.context['request'].user
-        liked_list = Like.objects.filter(post=obj)
+        # liked_list = Like.objects.filter(post=obj) # instead this, below line is written for quick query  
+        liked_list = Like.objects.select_related('post').filter(post=obj)
         who_liked_list = [item.who_liked for item in liked_list]
         if current_user in who_liked_list:
             return True
@@ -46,21 +47,25 @@ class PostSerializer(serializers.ModelSerializer):
 
     def get_is_viewed(self, obj):
         current_user = self.context['request'].user
-        viewed_list = View.objects.filter(post=obj)
+        # viewed_list = View.objects.filter(post=obj) # instead this, below line is written for quick query
+        viewed_list = View.objects.select_related('post').filter(post=obj)
         who_viewed_list = [item.who_viewed for item in viewed_list]
         if current_user in who_viewed_list:
             return True
         return False
 
     def get_likes_count(self, obj):
-        return Like.objects.filter(post=obj).count()
+        # return Like.objects.filter(post=obj).count() # instead this, below line is written for quick query
+        return Like.objects.select_related('post').filter(post=obj).count()
 
     def get_views_count(self, obj):
-        return View.objects.filter(post=obj).count()
+        # return View.objects.filter(post=obj).count() # instead this, below line is written for quick query
+        return View.objects.select_related('post').filter(post=obj).count()
 
     
     def get_profile_pic(self, obj):
-        profile_list = Profile.objects.filter(user=obj.writer)
+        # profile_list = Profile.objects.filter(user=obj.writer)# instead this, below line is written for quick query
+        profile_list = Profile.objects.select_related('user').filter(user=obj.writer)
         if profile_list:
             profile = profile_list[0]
             return 'media/' + str(profile.profile_pic)
@@ -87,12 +92,5 @@ class PostSerializer(serializers.ModelSerializer):
     "writer",
     "category"
     )
-
-
-
-
-
-
-
 
 
