@@ -3,7 +3,8 @@ from rest_framework import serializers
 from .models import Category, Post, Comment, Like, View
 from user.serializers import ProfileSerializer
 from user.models import Profile
-from pprint import pprint
+from django.contrib.auth.models import User
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,6 +36,7 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.SerializerMethodField()
     views_count = serializers.SerializerMethodField()
     profile_pic = serializers.SerializerMethodField()
+    writer_name = serializers.SerializerMethodField()
 
     def get_is_liked(self, obj):
         current_user = self.context['request'].user
@@ -70,6 +72,9 @@ class PostSerializer(serializers.ModelSerializer):
             profile = profile_list[0]
             return 'media/' + str(profile.profile_pic)
         return False
+    
+    def get_writer_name(self, obj):
+        return User.objects.get(id=obj.writer.id).username
 
     class Meta:
         model = Post
@@ -90,7 +95,8 @@ class PostSerializer(serializers.ModelSerializer):
     "status",
     "slug",
     "writer",
-    "category"
+    "category",
+    "writer_name"
     )
 
 
