@@ -7,7 +7,7 @@ from .serializers import RegisterSerializer, UserSerializer, ProfileSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser, FileUploadParser
 from .permissions import IsCurrentUserOwnerOrAdminOrReadOnlyForProfile,IsCurrentUserOwnerOrAdminOrReadOnlyForUser
 
 
@@ -37,7 +37,7 @@ class GetUpdateUserView(RetrieveUpdateAPIView):
 class ProfileView(ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    parser_classes = (MultiPartParser, FormParser)
+    parser_classes = (MultiPartParser, FormParser, JSONParser, FileUploadParser)
     permission_classes= (IsCurrentUserOwnerOrAdminOrReadOnlyForProfile,)
 
 

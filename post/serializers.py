@@ -13,9 +13,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    commenter_name = serializers.SerializerMethodField()
+    def get_commenter_name(self, obj):
+        return User.objects.get(id=obj.commenter_id).username
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = '__all__' 
 
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -37,7 +40,8 @@ class PostSerializer(serializers.ModelSerializer):
     views_count = serializers.SerializerMethodField()
     profile_pic = serializers.SerializerMethodField()
     writer_name = serializers.SerializerMethodField()
-
+    like_id = serializers.SerializerMethodField()
+     
     def get_is_liked(self, obj):
         current_user = self.context['request'].user
         # liked_list = Like.objects.filter(post=obj) # instead this, below line is written for quick query  
@@ -64,7 +68,6 @@ class PostSerializer(serializers.ModelSerializer):
         # return View.objects.filter(post=obj).count() # instead this, below line is written for quick query
         return View.objects.select_related('post').filter(post=obj).count()
 
-    
     def get_profile_pic(self, obj):
         # profile_list = Profile.objects.filter(user=obj.writer)# instead this, below line is written for quick query
         profile_list = Profile.objects.select_related('user').filter(user=obj.writer)
@@ -74,7 +77,15 @@ class PostSerializer(serializers.ModelSerializer):
         return False
     
     def get_writer_name(self, obj):
-        return User.objects.get(id=obj.writer.id).username
+        # return User.objects.get(id=obj.writer.id).username
+        return obj.writer.username
+    
+    def get_like_id(self, obj):
+        current_user = self.context['request'].user
+        like_id = Like.objects.select_related('post').filter(post=obj).filter(who_liked=current_user)
+        if like_id:
+            return like_id[0].id
+        return False
 
     class Meta:
         model = Post
@@ -96,7 +107,8 @@ class PostSerializer(serializers.ModelSerializer):
     "slug",
     "writer",
     "category",
-    "writer_name"
+    "writer_name",
+    'like_id'
     )
 
 
