@@ -52,7 +52,7 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    content = models.TextField(max_length=300)
+    content = models.TextField()
     date_stamp = models.DateTimeField(auto_now_add=True)
     commenter = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True, related_name='comments')
