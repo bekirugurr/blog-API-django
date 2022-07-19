@@ -81,11 +81,20 @@ class PostSerializer(serializers.ModelSerializer):
         return obj.writer.username
     
     def get_like_id(self, obj):
-        current_user = self.context['request'].user
-        like_id = Like.objects.select_related('post').filter(post=obj).filter(who_liked=current_user)
-        if like_id:
-            return like_id[0].id
-        return False
+        if self.context['request'].user.id:
+            current_user_id = self.context['request'].user.id
+            print(current_user_id)
+            like_id_arr = Like.objects.filter(post=obj).filter(who_liked=current_user_id)
+            if like_id_arr:
+                return like_id_arr[0].id
+        return 1 #! bu 1 i hiç kullanmıyor. Ama integer dönmezse hata veriyor
+
+    # def get_like_id(self, obj):
+    #     current_user = self.context['request'].user
+    #     like_id = Like.objects.select_related('post').filter(post=obj).filter(who_liked=current_user)
+    #     if like_id:
+    #         return like_id[0].id
+    #     return False
 
     class Meta:
         model = Post
