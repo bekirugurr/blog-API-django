@@ -83,7 +83,6 @@ class PostSerializer(serializers.ModelSerializer):
     def get_like_id(self, obj):
         if self.context['request'].user.id:
             current_user_id = self.context['request'].user.id
-            print(current_user_id)
             like_id_arr = Like.objects.filter(post=obj).filter(who_liked=current_user_id)
             if like_id_arr:
                 return like_id_arr[0].id
