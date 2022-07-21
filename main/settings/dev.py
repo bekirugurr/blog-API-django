@@ -15,7 +15,7 @@ THIRD_PARTY_MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
-MIDDLEWARE = THIRD_PARTY_MIDDLEWARE + MIDDLEWARE
+MIDDLEWARE = list(THIRD_PARTY_MIDDLEWARE) + list(MIDDLEWARE)
 
 
 # Database

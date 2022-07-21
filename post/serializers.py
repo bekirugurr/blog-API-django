@@ -73,7 +73,7 @@ class PostSerializer(serializers.ModelSerializer):
         profile_list = Profile.objects.select_related('user').filter(user=obj.writer)
         if profile_list:
             profile = profile_list[0]
-            return 'media/' + str(profile.profile_pic)
+            return profile.profile_pic
         return False
     
     def get_writer_name(self, obj):
