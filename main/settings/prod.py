@@ -1,5 +1,5 @@
 from .base import *
-DEBUG = False
+DEBUG = True
 
 # Until we deploy our project, we do not know the hosting server,
 # so, keep it allowing all for now.
