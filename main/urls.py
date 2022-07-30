@@ -12,9 +12,9 @@ from drf_yasg import openapi
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Quiz API",
+        title="Blog API",
         default_version="v1",
-        description="Quiz API project provides quiz questions for different categories",
+        description="Blog API project provides quiz questions for different categories",
         terms_of_service="#",
         contact=openapi.Contact(email="bekirugur070@gmail.com"),  # Change e-mail on this line!
         license=openapi.License(name="BSD License"),
