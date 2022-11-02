@@ -28,6 +28,8 @@
 **select_related** method was preferred for query optimisation. 
 **SerializerMethodField** was preferred for field customization.
 **Some methods were overridden** to create custom functionalities.
-##  <a href="https://github.com/bekirugurr/react-redux-blog-app" target="_blank"> Frontend repository 🚀 </a> if you want to check
+
+
+<a href="https://github.com/bekirugurr/react-redux-blog-app" target="_blank"> Frontend repository 🚀 </a> if you want to check
 
 
