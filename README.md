@@ -1,11 +1,12 @@
 # Blog API with Django Rest Framework 
 
-<p><a href="https://www.python.org/"><img src="https://user-images.githubusercontent.com/94041207/199345472-e98865f2-0d41-4bd9-9a5c-9c21b4831c1e.png" alt="python" height="30" data-canonical-src="https://www.python.org/static/img/python-logo.png" style="max-width: 100%;">   </a>
-<a href="https://www.djangoproject.com/"><img src="https://user-images.githubusercontent.com/94041207/199345498-a5e894de-16cc-4715-8a68-78fe070afd30.png" alt="django" height="30" data-canonical-src="https://www.djangoproject.com/m/img/logos/django-logo-negative.png" style="max-width: 100%;">   </a>
+<a href="https://www.python.org/"><img src="https://user-images.githubusercontent.com/94041207/199492900-766b0685-56b1-42fc-8510-a221f05de673.png" alt="python" height="30" data-canonical-src="https://www.python.org/static/img/python-logo.png" style="max-width: 100%;">   </a>
+<a href="https://www.djangoproject.com/"><img src="https://user-images.githubusercontent.com/94041207/199492944-09e06dfc-a246-48e5-9dea-08c57195fcbd.png" alt="django" height="30" data-canonical-src="https://www.djangoproject.com/m/img/logos/django-logo-negative.png" style="max-width: 100%;"></a>
 <a href="https://www.django-rest-framework.org/"><img src="https://user-images.githubusercontent.com/94041207/199345513-1a3bd338-9d8a-44a4-b3c4-e64b2ac7eed4.png" alt="django rest framework" height="30" style="max-width: 100%;"></a>
-<a href="https://www.sqlite.org/index.html"><img src="https://user-images.githubusercontent.com/94041207/199345538-30ee000d-8dc2-4334-ac31-f54a62fc9549.png" alt="SQLite" height="30" style="max-width: 100%;"></a>
-<a href="https://www.postgresql.org/"><img src="https://user-images.githubusercontent.com/94041207/199345580-4c43f36f-6ec8-4d87-8c0c-756c9d91827f.png" alt="PostgreSQL" height="30" style="max-width: 100%;"></a>
-<a href="https://www.heroku.com/"> <img src="https://user-images.githubusercontent.com/94041207/199347164-3f31eca4-6b7e-4c6d-bb1d-0959f5134e30.png" alt="heroku" height="30" data-canonical-src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" style="max-width: 100%;"> </a></p>
+<a href="https://www.sqlite.org/index.html"><img src="https://user-images.githubusercontent.com/94041207/199492996-de5eaa34-dc69-463a-a31d-8fc3a3dc7694.png" alt="SQLite" height="30" style="max-width: 100%;"></a>
+<a href="https://www.postgresql.org/"><img src="https://user-images.githubusercontent.com/94041207/199492963-9315ee83-5be9-43b3-aa14-ebdd9a869aea.png" alt="PostgreSQL" height="30" style="max-width: 100%;"></a>
+<a href="https://postman.com" rel="nofollow"> <img src="https://user-images.githubusercontent.com/94041207/199493662-5b0ab606-1e40-4aee-919e-f8bae4e65794.png" alt="postman" height="30" data-canonical-src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" style="max-width: 100%;"> </a>
+<a href="https://www.heroku.com/"> <img src="https://user-images.githubusercontent.com/94041207/199493654-70c90e3b-24e6-43ab-b700-b73977c6187c.png" alt="heroku" height="30" data-canonical-src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" style="max-width: 100%;"> </a>
 
 ## Demo
 <a href="https://react-redux-blogapp.vercel.app/" target="_blank"> Live link 🚀 </a>
