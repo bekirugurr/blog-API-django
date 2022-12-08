@@ -9,3 +9,4 @@ python -m pip install --force-reinstall -U setuptools
 python manage.py collectstatic --no-input
 python manage.py makemigrations
 python manage.py migrate
+python manage.py ensure_adminuser --username admin --password Admin123! --noinput --email admin@gmail.com
